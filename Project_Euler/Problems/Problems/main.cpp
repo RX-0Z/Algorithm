@@ -7,28 +7,15 @@
 #include <cmath>
 #include <map>
 #include <set>
+#include "problem.h"
 
 using namespace std;
 
 int main()
 {
-	int number = 1000;
-	int total = 0;
+	problem p;
 
-	while (number)
-	{
-		number--;	
+	p.problem2();
 
-		if (number % 3 == 0)
-		{
-			total += number;
-		}		
-		else if (number % 5 == 0)
-		{
-			total += number;
-		}		
-	}
-
-	cout << "total : " << total << endl;
 	return 0;
 }
