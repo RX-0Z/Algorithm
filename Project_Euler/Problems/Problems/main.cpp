@@ -15,7 +15,7 @@ int main()
 {
 	problem p;
 
-	p.problem2();
+	p.problem3();
 
 	return 0;
 }

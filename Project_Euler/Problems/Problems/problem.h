@@ -7,6 +7,7 @@ public:
 public:
 	void problem1();
 	void problem2();
+	void problem3();
 
 public:
 	int fibonacci(int n);
