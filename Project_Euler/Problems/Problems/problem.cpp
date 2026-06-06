@@ -28,6 +28,8 @@ void problem::problem3()
 	bool isPrimeNumber = false;
 	unsigned int primeNumber = 0;
 
+	vector<int> primeNumbers;
+
 	cout << "Composite number:";
 	cin >> compositeNumber;
 	cout << endl;
@@ -37,20 +39,26 @@ void problem::problem3()
 	for (int i = 1; i <= compositeNumber; i++)
 	{
 		remainder = compositeNumber % i;
-		cout << "compositeNumber:" << i << endl;
-
-		// 소수 여부 확인
+		cout << "Factor:" << i << endl;
+				
 		if (0 == remainder && i > 1)
 		{		
-			for (int j = 1; j <= remainder; j++)
-			{
-				int count = 0;
-				if (0 == remainder % j && j > 1)
+			// 소수 여부 확인
+			for (int j = 1; j <= i; j++)
+			{				
+				if (0 == i % j && j > 1)
 				{									
-					if (j == remainder)
+					if (i == j)
 					{
 						isPrimeNumber = true;
-						primeNumber = j;
+						primeNumbers.push_back(j);
+						cout << "primeNumber! -> " << j << endl;
+						break;
+					}
+					else
+					{
+						cout << "another primeNumber! -> " << j << endl;
+						break;
 					}
 				}
 			}			
@@ -63,7 +71,12 @@ void problem::problem3()
 	}
 	else
 	{
-		cout << "prime number:" << primeNumber << endl;
+		cout << compositeNumber << "의 ";
+
+		for (size_t i = 0; i < primeNumbers.size(); i++)
+		{
+			cout << "소인수:" << primeNumbers.at(i) << " ";
+		}		
 	}
 }
 
