@@ -78,6 +78,17 @@ void problem::problem3()
 			cout << "¼ÒÀÎ¼ö:" << primeNumbers.at(i) << " ";
 		}		
 	}
+
+	int maxPrimeNumber = 0;
+	if (!primeNumbers.empty())
+	{
+		int maxPrimeNumber = primeNumbers[0];
+
+		for (int prime : primeNumbers)
+		{
+			maxPrimeNumber = max(maxPrimeNumber, prime);
+		}
+	}
 }
 
 void problem::problem2()
