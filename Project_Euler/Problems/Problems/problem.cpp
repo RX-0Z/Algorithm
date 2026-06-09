@@ -8,6 +8,8 @@
 #include <cmath>
 #include <map>
 #include <set>
+#include <chrono>
+#include <thread> // 예제용 가짜 지연을 위해 사용
 
 using namespace std;
 
@@ -22,73 +24,58 @@ void problem::problem3()
 	// step2: 소인수 구하기
 	// step3: 가장 큰 소인수 구하기
 
-	unsigned int compositeNumber = 0;
-	unsigned int primeFactor = 0;
-	unsigned int remainder = 0;
-	bool isPrimeNumber = false;
-	unsigned int primeNumber = 0;
+	unsigned long long compositeNumber = 0;	
+	unsigned long long remainder = 0;	
+	unsigned long long primeNumber = 0;
 
-	vector<int> primeNumbers;
+	vector<unsigned long long> primeNumbers;
+	vector<unsigned long long> factors;
 
 	cout << "Composite number:";
 	cin >> compositeNumber;
 	cout << endl;
 
-	// 나누어지는 수들 중 가장 작은 값 찾기
-
+	// 나누어지는 수들 중 가장 큰 값 찾기
 	for (int i = 1; i <= compositeNumber; i++)
 	{
-		remainder = compositeNumber % i;
-		cout << "Factor:" << i << endl;
+		remainder = compositeNumber % i;		
 				
-		if (0 == remainder && i > 1)
+		if (0 == remainder && (i % 2 != 0) && i != 0)
 		{		
-			// 소수 여부 확인
-			for (int j = 1; j <= i; j++)
-			{				
-				if (0 == i % j && j > 1)
-				{									
-					if (i == j)
-					{
-						isPrimeNumber = true;
-						primeNumbers.push_back(j);
-						cout << "primeNumber! -> " << j << endl;
-						break;
-					}
-					else
-					{
-						cout << "another primeNumber! -> " << j << endl;
-						break;
-					}
-				}
-			}			
+			factors.push_back(i);			
 		}		
 	}
 
-	if (!isPrimeNumber)
-	{
-		cout << "No prime numbers." << endl;
-	}
-	else
-	{
-		cout << compositeNumber << "의 ";
-
-		for (size_t i = 0; i < primeNumbers.size(); i++)
+	// 소수 여부 확인
+	for (int prime : factors)
+	{		
+		for (int i = 1; i <= prime; i++)
 		{
-			cout << "소인수:" << primeNumbers.at(i) << " ";
-		}		
+			remainder = prime % i;
+
+			if (0 == remainder && i!= prime && i != 1)
+			{
+				break;			
+			}
+
+			if (0 == remainder && i == prime && i != 1)
+			{
+				primeNumbers.push_back(i);				
+			}
+		}	
 	}
 
+	// 가장 큰 수 찾기
 	int maxPrimeNumber = 0;
 	if (!primeNumbers.empty())
 	{
-		int maxPrimeNumber = primeNumbers[0];
-
 		for (int prime : primeNumbers)
 		{
 			maxPrimeNumber = max(maxPrimeNumber, prime);
 		}
 	}
+
+	cout << "maxPrimeNumber : " << maxPrimeNumber << endl;
 }
 
 void problem::problem2()
