@@ -20,7 +20,7 @@ int main()
 	auto start = chrono::high_resolution_clock::now();
 
 	// 2. 측정할 로직
-	p.problem3();
+	p.problem4();
 
 	//3. 종료 시간 기록
 	auto end = chrono::high_resolution_clock::now();
