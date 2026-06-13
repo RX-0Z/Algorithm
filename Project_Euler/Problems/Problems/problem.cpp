@@ -151,9 +151,49 @@ bool problem::is_palindrome(unsigned int n)
 	// 들어온 매개변수 (Parameter)가 몇자리 수인가?
 	string number = to_string(n);
 	unsigned int digit_length = number.size();
+	
+	unsigned int centerNumber = 0;
+	vector<unsigned int> left_vec;
+	vector<unsigned int> right_vec;
 
 	// 홀수 일때
+	if (0 != digit_length % 2)
+	{
+		//중간 숫자 
+		unsigned int centerIndex = digit_length / 2;
+		char middle = number[centerIndex];
+
+		centerNumber = static_cast<unsigned int>(middle - '0');
+		cout << "centerNumber:" << centerNumber << endl;
+
+		for (int i = 0; i <= centerIndex; i++)
+		{
+			left_vec.push_back(stoi(number.at(i)));
+		}
+
+		for (auto var : left_vec)
+		{
+			cout << var << " ";
+		}
+		cout << endl;		
+
+		for (int j = digit_length; j >= centerIndex; j--)
+		{
+			right_vec.push_back(number[j]);
+		}
+
+		for (auto var : right_vec)
+		{
+			cout << var << " ";
+		}
+		cout << endl;
+
+	}
 	// 짝수 일때 
+	else
+	{
+
+	}	
 
 	// 왼쪽, 오른쪽 분할
 	// 뒤집어서 일치여부 판단
