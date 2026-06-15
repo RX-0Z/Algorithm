@@ -21,7 +21,7 @@ int main()
 
 	// 2. 측정할 로직
 	//p.problem4();
-	p.is_palindrome(151);
+	p.is_palindrome(1011);
 
 	//3. 종료 시간 기록
 	auto end = chrono::high_resolution_clock::now();

@@ -146,8 +146,9 @@ void problem::problem3()
 
 bool problem::is_palindrome(unsigned int n)
 {
-	// 회문수를 판단하는 함수
-	
+	// 회문수를 판단하는 함수	
+	bool isPalindrome = true;
+
 	// 들어온 매개변수 (Parameter)가 몇자리 수인가?
 	string number = to_string(n);
 	unsigned int digit_length = number.size();
@@ -168,7 +169,7 @@ bool problem::is_palindrome(unsigned int n)
 
 		for (int i = 0; i <= centerIndex; i++)
 		{
-			left_vec.push_back(stoi(number.at(i)));
+			left_vec.push_back(stoi(number.substr(i, 1)));
 		}
 
 		for (auto var : left_vec)
@@ -177,9 +178,9 @@ bool problem::is_palindrome(unsigned int n)
 		}
 		cout << endl;		
 
-		for (int j = digit_length; j >= centerIndex; j--)
+		for (int j = digit_length - 1; j > 0; j--)
 		{
-			right_vec.push_back(number[j]);
+			right_vec.push_back(number[j] - '0');
 		}
 
 		for (auto var : right_vec)
@@ -188,17 +189,72 @@ bool problem::is_palindrome(unsigned int n)
 		}
 		cout << endl;
 
+		if (left_vec.size() == right_vec.size())
+		{
+			for (int k = 0; k < centerIndex; k++)
+			{
+				if (left_vec[k] != right_vec[k])
+				{
+					cout << "not palindrome!" << endl;
+					isPalindrome = false;
+				}
+			}
+		}
+		else
+		{
+			cout << "wrong!" << endl;
+		}
 	}
 	// 짝수 일때 
 	else
 	{
+		//중간 숫자 
+		unsigned int centerIndex = digit_length / 2;
+		char middle = number[centerIndex];
 
+		centerNumber = static_cast<unsigned int>(middle - '0');
+		cout << "centerNumber:" << centerNumber << endl;
+
+		for (int i = 0; i < centerIndex; i++)
+		{
+			left_vec.push_back(stoi(number.substr(i, 1)));
+		}
+
+		for (auto var : left_vec)
+		{
+			cout << var << " ";
+		}
+		cout << endl;
+
+		for (int j = digit_length - 1; j > 0; j--)
+		{
+			right_vec.push_back(number[j] - '0');
+		}
+
+		for (auto var : right_vec)
+		{
+			cout << var << " ";
+		}
+		cout << endl;
+
+		if (left_vec.size() == right_vec.size())
+		{
+			for (int k = 0; k < centerIndex; k++)
+			{
+				if (left_vec[k] != right_vec[k])
+				{
+					cout << "not palindrome!" << endl;
+					isPalindrome = false;
+				}
+			}
+		}
+		else
+		{
+			cout << "wrong!" << endl;
+		}
 	}	
-
-	// 왼쪽, 오른쪽 분할
-	// 뒤집어서 일치여부 판단
-
-	return false;
+	cout << boolalpha << "isPalindrome:" << isPalindrome << endl;
+	return isPalindrome;
 }
 
 void problem::problem4()
