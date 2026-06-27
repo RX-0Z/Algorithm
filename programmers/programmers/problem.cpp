@@ -72,3 +72,31 @@ void problem::problem4()
 
     return;
 }
+
+vector<int> problem5(vector<string> cpr) {
+    vector<int> answer = { 0, 0, 0, 0, 0 };
+    vector<string> basic_order = { "check", "call", "pressure", "respiration", "repeat" };
+
+    for (int i = 0; i < cpr.size(); i++) {
+        for (int j = 0; j < basic_order.size(); j++) {
+            if (cpr[i] == basic_order[j]) {
+                answer[i] = j + 1;
+                break;
+            }
+        }
+    }
+
+    return answer;
+}
+
+int problem6(int storage, int usage, vector<int> change) {
+    int total_usage = 0;
+    for (int i = 0; i < change.size(); i++) {
+        usage += (usage * change[i] / 100);
+        total_usage += usage;
+        if (total_usage > storage) {
+            return i;
+        }
+    }
+    return -1;
+}

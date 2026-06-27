@@ -9,5 +9,8 @@ public:
 	void problem2();	
 	void problem3();	
 	void problem4();	
+	vector<int> problem5(vector<string> cpr);
+	int problem6(int storage, int usage, vector<int> change);
+
 };
 
