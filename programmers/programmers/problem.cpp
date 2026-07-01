@@ -149,12 +149,7 @@ int problem7(int seat, vector<vector<string>> passengers) {
     return answer;
 }
 
-#include <string>
-#include <vector>
-
-using namespace std;
-
-string solution(string nickname) {
+string problem8(string nickname) {
     string answer = "";
     for (int i = 0; i < nickname.size(); i++) {
         if (nickname[i] == 'l') {
@@ -173,11 +168,21 @@ string solution(string nickname) {
             answer += nickname[i];
         }
     }
-    if (answer.size() < 3 && answer.size() < 4) {
+    for (int i = answer.size(); i <= 3; i++) {
         answer += "o";
     }
     if (answer.size() > 8) {
         answer = answer.substr(0, 8);
     }
     return answer;
+}
+
+int problem9(void) {
+    int a;
+    int c;
+    cin >> a >> c;
+
+    int b_square = (c * c) - (a * a);
+    cout << b_square << endl;
+    return 0;
 }
