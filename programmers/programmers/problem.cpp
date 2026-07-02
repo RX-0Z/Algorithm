@@ -186,3 +186,69 @@ int problem9(void) {
     cout << b_square << endl;
     return 0;
 }
+
+int problem10(void) {
+    int year, answer;
+    string age_type;
+    cin >> year >> age_type;
+
+    if (age_type == "Korea") {
+        answer = 2030 - year + 1;
+    }
+    else if (age_type == "Year") {
+        answer = 2030 - year;
+    }
+
+    cout << answer << endl;
+    return 0;
+}
+
+#include <iostream>
+
+using namespace std;
+
+int problem11(void) {
+    int start;
+    int before;
+    int after;
+    cin >> start >> before >> after;
+
+    int money = start;
+    int month = 1;
+
+    while (money < 70) {
+        money += before;
+        month++;
+    }
+    while (money < 100) {
+        money += after;
+        month++;
+    }
+    cout << month << endl;
+    return 0;
+}
+
+vector<int> problem12(string route) {
+    int east = 0;
+    int north = 0;
+    vector<int> answer(2);
+    for (int i = 0; i < route.length(); i++) {
+        switch (route[i]) {
+        case 'N':
+            north++;
+            break;
+        case 'S':
+            north--;
+            break;
+        case 'E':
+            east++;
+            break;
+        case 'W':
+            east--;
+            break;
+        }
+    }
+    answer[0] = east;
+    answer[1] = north;
+    return answer;
+}
